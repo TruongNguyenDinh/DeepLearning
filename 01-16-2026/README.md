@@ -25,11 +25,11 @@ $$
 ## Tổng trọng số cho đầu ra y1 và y2
 
 $$
-y_1 = h1f*w_{5}+h2f*w_{6}+b_{2}
+y_{1} = h1f * w_{5}+h2f*w_{6}+b_{2}
 $$
 
 $$
-y_2 = h1f*w_{7}+h2f*w_{8}+b_{2}
+y_2 = h1f * w_{7}+h2f*w_{8}+b_{2}
 $$
 
 ## Đầu ra cho tại y1 và y2
@@ -58,8 +58,10 @@ double dy2 = (y2 - x2_d) * y2 * (1 - y2);
 Công thức là:
 
 $$
-\delta_{y_{1}} = \frac{\delta{L}}{\delta_{y_{1final}}} * \frac{\delta{y_{1final}}}{\delta{y_{1}}} = (y_{1final}-x_{1})*y_{1final}*(1-y_{1final}) \\
-\delta_{y_{2}} = \frac{\delta{L}}{\delta_{y_2final}} * \frac{\delta{y_{2final}}}{\delta{y_{2}}} = (y_{2final}-x_{2})*y_{2final}*(1-y_{2final})
+\delta_{y1} = \frac{\delta{L}}{\delta_{y1_{final}}} * \frac{\delta{y1_{final}}}{\delta{y_{1}}} = (y1_{final}-x_{1}) * y1_{final} * (1-y1_{final})
+$$
+$$
+\delta_{y_{2}} = \frac{\delta{L}}{\delta_{y_2final}} * \frac{\delta{y_{2final}}}{\delta{y_{2}}} = (y_{2final}-x_{2}) * y_{2final}*(1-y_{2final})
 $$
 
 $$
@@ -78,9 +80,12 @@ double dh2 = (dy1*w[6] + dy2*w[8]) * h2f * (1 - h2f);
 Công thức đạo hàm các trọng số cho nút xuất H1:
 
 $$
-\frac{\delta{L}}{\delta{w_{i}}}=(y_{1final} - x_{1})*(1-y_{1final})*y_{1final}*w_{5}*(1-H_{1final})*H_{1final}*x_{1} \\
- + (y_{2final} - x_{2})*(1-y_{2final})*y_{2final}*w_{7}*(1-H_{1final})*H_{1final}*x_{1} \\
- => (dy_{1}*w_{5} + dy_{2}*w_{7})* h1f *(1-h1f)*x_{i}
+\frac{\delta{L}}{\delta{wi}} = (y1_{final} - x_{1}) * (1-y1_{final}) * y1_{final} * w_{5} * (1-H1_{final}) * H1_{final} * x_{1} + \\
+(y2_{final} - x_{2}) * (1-y2_{final}) * y2_{final} * w_{7} * (1-H1_{final}) * H1_{final} * x_{1}
+$$
+
+$$
+ => (dy_{1} * w_{5} + dy_{2} * w_{7}) * h1f * (1-h1f) * x_{i}
 $$
 
 
@@ -96,9 +101,11 @@ $$
 ## Cập nhật trọng số cho đầu ra
 
 Công thức:
+
 $$
 w_{i-new} = w_{i} - \eta* \frac{\delta{L}}{\delta{w_{i}}}
 $$
+
 với $\eta$ là tốc độ học (learning rate)
 
 $$

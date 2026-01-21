@@ -50,6 +50,7 @@ $$
 
 
 Đạo hàm
+
 $$
 ReLU^{'}(x) = 
 \begin{cases}
@@ -61,18 +62,21 @@ $$
 ### 3.SELU
 
 Định nghĩa
+
 $$
 SELU(x)= \begin{cases}
 \lambda x, & x>0 \\
 \lambda \alpha (e^x - 1), & x \le 0
 \end{cases}
 $$
+
 Trong đó ta có hai hằng số cố định là:
 
 - $\alpha \approx 1.67326$
 - $\lambda \approx 1.0507$
 
 Đạo hàm
+
 $$
 SELU^{'}(x) = \begin{cases}
 \lambda & x > 0 \\
@@ -105,9 +109,11 @@ $$L = \frac{1}{2}[(out_1 - y_1)^2 + (out_2 - y_2)^2 + (out_3 - y_3)^2] $$
 ## Lan Truyền ngược
 
 Công thức cốt lõi như sau:
+
 $$
 \delta = \frac{\partial L}{\partial z} = \frac{\partial L}{\partial a}*\frac{\partial a}{\partial z}
 $$
+
 Trong đó:
 
 - z : Tổng trọng số (sum)
@@ -115,14 +121,13 @@ Trong đó:
   
   ### 1. Tại output layer
   
-  $$
-  \delta^{out}_i = (y_{pred}-y_i)
-  $$
+ $$ \delta_i^{\text{out}} = (y_{\text{pred}} - y_i)$$
+
   
   ### 2. Tại tầng ẩn số 3 (SELU)
   
   $$
-  \delta^{3}_i = (\sum \delta^{out}_i * w^{out}_{ij}). SELU^{'}(z^{(3)}_j)
+  \delta^{3}_{i} = (\sum \delta^{out}_{i} * w^{out}_{ij}). SELU^{'}(z^{(3)}_{j})
   $$
   
   ### 3. Tại tầng ẩn số 2 (ReLU)
